@@ -1,9 +1,93 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Psychic Game</title>
 </head>
-<body>
+<body background="file:///Users/dhavalbdesai/Desktop/RCB/HW3/assets/images/CarltheIkeaMonkey.png">
+	
+	<h1> 
+	<font color= "white">Guess what letter Carl is dreaming about!
+	</h1>
+		<!--need to center text and change background image size-->
+	<h3 center> 
+	<font color= "white">Is it A?   Is it B?  Is it E?  Is it... X!? Guess any letter (like the whole alph e' bet)
+	
+	</h3>
+		<p>
+		<font color="white">press any key to guess
+		</p>
+	<div id=game></div>	
+
+	<script type="text/javascript">
+		
+		// array with options 			
+		var options =["a","b","c","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+		//win/lose
+
+		var wins = 0
+		var losses = 0
+
+		// variables
+
+		var allGuesses = 9
+		
+
+		//captures key clicks
+     document.onkeyup = function(event){
+		
+		// lowercase
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		// computer makes random guess
+		
+		var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+	}
+		//function
+		if (userGuess==computerGuess)
+		{
+			wins++; 
+			alert ("YOU WIN SON!!");
+			reset()
+		}	
+		else if (userGuess!==computerGuess)
+		{
+			allguesses--;
+
+		}
+
+		if (allguesses=0)
+		{
+			losses++;
+			alert ("you out of luck son")
+			reset()
+		}
+
+		//function reset;
+		function reset()
+		{
+			allguesses=9;
+		}
+
+		//counting win/loss & putting into HTML
+
+		var html = "<p>Press any key to start playing</p>" +
+		"<p>wins: " +
+		wins + 
+		"</p>" +
+		"<p>losses: " + 
+		losses + 
+		"</p>" +
+		"<p>guesses: " + 
+		guesses + 
+		"</p>";
+		// Placing the html into the game ID
+		document.querySelector('#game').innerHTML = html;
+
+	</script>
+
+
 
 </body>
 </html>
